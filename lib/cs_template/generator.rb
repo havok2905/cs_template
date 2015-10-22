@@ -20,11 +20,14 @@ module CsTemplate
       %w(base components layout pages themes utils vendor)
     end
 
-    def generate_sass_files
-      puts File.dirname(File.dirname(File.dirname(__FILE__)))
+    def asset_path(dir_name)
+      root_dir = File.dirname(File.dirname(File.dirname(__FILE__)))
+      root_dir.join 'app', 'assets', 'stylesheets', dir_name
+    end
 
+    def generate_sass_files
       seven_one_pattern.each do |dir_name|
-        FileUtils.mkdir_p dir_name
+        FileUtils.cp_r asset_path(dir_name)
       end
     end
 
