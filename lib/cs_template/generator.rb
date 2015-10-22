@@ -21,6 +21,8 @@ module CsTemplate
     end
 
     def generate_sass_files
+      puts File.dirname(__FILE__)
+
       seven_one_pattern.each do |dir_name|
         FileUtils.mkdir_p dir_name
       end
