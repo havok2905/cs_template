@@ -19,6 +19,8 @@ module CsTemplate
     def generate_sass_files
       seven_one_pattern.each do |dir_name|
         copy_directory(dir_name) || init_directory(dir_name) || nil
+        gem_install 'bourbon'
+        gem_install 'neat'
       end
     end
 
@@ -55,6 +57,12 @@ module CsTemplate
     def destroy_directory(dir_name)
       return if no_directory asset_path(dir_name)
       FileUtils.rm_r dir_name
+    end
+
+    def gem_install(gem)
+      FileUtils.cd 'vendor'
+      system "#{gem} install"
+      FileUtils.cd '../'
     end
   end
 end
