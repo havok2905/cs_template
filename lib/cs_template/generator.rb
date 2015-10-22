@@ -6,24 +6,32 @@ module CsTemplate
 
     desc 'install', 'Installs the sass files.'
     def install
-      seven_one_pattern.each do |dir_name|
-        copy_directory(dir_name) || init_directory(dir_name) || nil
-      end
+      sass_files_install
       gem_install 'bourbon'
       gem_install 'neat'
     end
 
     desc 'destroy', 'BEWARE! Destroys all SASS files.'
     def destroy
-      seven_one_pattern.each do |dir_name|
-        destroy_directory(dir_name) || nil
-      end
+      sass_files_destroy
     end
 
     private
 
     def seven_one_pattern
       %w(base components layout pages themes utils vendor)
+    end
+
+    def sass_files_install
+      seven_one_pattern.each do |dir_name|
+        copy_directory(dir_name) || init_directory(dir_name) || nil
+      end
+    end
+
+    def sass_files_destroy
+      seven_one_pattern.each do |dir_name|
+        destroy_directory(dir_name) || nil
+      end
     end
 
     def gem_install(gem)
