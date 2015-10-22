@@ -22,7 +22,7 @@ module CsTemplate
 
     def asset_path(dir_name)
       root_dir = File.dirname(File.dirname(File.dirname(__FILE__)))
-      root_dir.join 'app', 'assets', 'stylesheets', dir_name
+      File.join root_dir, 'app', 'assets', 'stylesheets', dir_name
     end
 
     def generate_sass_files
