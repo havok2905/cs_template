@@ -22,16 +22,22 @@ module CsTemplate
       %w(base components layout pages themes utils vendor)
     end
 
+    def main_scss
+      'main.scss'
+    end
+
     def sass_files_install
       seven_one_pattern.each do |dir_name|
         copy_directory(dir_name) || init_directory(dir_name) || nil
       end
+      FileUtils.cp_r asset_path(main_scss), './'
     end
 
     def sass_files_destroy
       seven_one_pattern.each do |dir_name|
         destroy_directory(dir_name) || nil
       end
+      FileUtils.rm_r local_path(main_scss)
     end
 
     def gem_install(gem)
@@ -57,7 +63,7 @@ module CsTemplate
     def destroy_directory(dir_name)
       path = local_path dir_name
       return if !local_directory? path
-      FileUtils.rm_r dir_name
+      FileUtils.rm_r path
     end
 
     def asset_path(dir_name)
