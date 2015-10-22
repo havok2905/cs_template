@@ -34,7 +34,7 @@ module CsTemplate
     end
 
     def no_directory(path)
-      puts Dir[path].entries - %w{ . .. }
+      puts (Dir[path].entries - %w{ . .. })
       return true if (Dir[path].entries - %w{ . .. }).empty?
     end
 
