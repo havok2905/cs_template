@@ -48,7 +48,7 @@ module CsTemplate
 
     def destroy_directory(dir_name)
       path = local_path dir_name
-      return unless !local_directory? path
+      return if !local_directory? path
       FileUtils.rm_r dir_name
     end
 
