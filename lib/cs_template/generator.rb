@@ -18,13 +18,13 @@ module CsTemplate
 
     def generate_sass_files
       seven_one_pattern.each do |dir_name|
-        copy_directory(dir_name) || init_directory(dir_name)
+        copy_directory(dir_name) || init_directory(dir_name) || nil
       end
     end
 
     def destroy_sass_files
       seven_one_pattern.each do |dir_name|
-        FileUtils.rm_r(dir_name) unless no_directory asset_path(dir_name)
+        remove_directory(dir_name) || nil
       end
     end
 
@@ -50,6 +50,12 @@ module CsTemplate
 
     def init_directory(dir_name)
       FileUtils.mkdir_p asset_path(dir_name)
+    end
+
+    def destroy_directory(dir_name)
+      path = asset_path dir_name
+      return if no_directory path
+      FileUtils.rm_r(path)
     end
   end
 end
