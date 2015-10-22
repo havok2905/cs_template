@@ -1,5 +1,7 @@
+require 'thor'
+
 module CsTemplate
-  class Generator < ::Thor
+  class Generator < Thor
 
     desc 'Installs the sass files'
     def install
