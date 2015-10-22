@@ -44,7 +44,7 @@ module CsTemplate
     end
 
     def init_directory(dir_name)
-      FileUtils.makdir_p asset_path(dir_name)
+      FileUtils.mkdir_p asset_path(dir_name)
     end
 
     def generate_bourbon
