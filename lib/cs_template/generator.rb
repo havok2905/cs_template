@@ -24,12 +24,17 @@ module CsTemplate
 
     def destroy_sass_files
       seven_one_pattern.each do |dir_name|
+        next if no_directory asset_path(dir_name)
         FileUtils.rm_r dir_name
       end
     end
 
     def seven_one_pattern
       %w(base components layout pages themes utils vendor)
+    end
+
+    def no_directory(path)
+      return true if (Dir[path].entries - %w{ . .. }).empty?
     end
 
     def asset_path(dir_name)
@@ -39,18 +44,12 @@ module CsTemplate
 
     def copy_directory(dir_name)
       path = asset_path dir_name
-      return if (Dir[path].entries - %w{ . .. }).empty?
+      return if no_directory path
       FileUtils.cp_r asset_path(dir_name), './'
     end
 
     def init_directory(dir_name)
       FileUtils.mkdir_p asset_path(dir_name)
-    end
-
-    def generate_bourbon
-    end
-
-    def generate_neat
     end
   end
 end
