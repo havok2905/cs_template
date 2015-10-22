@@ -40,7 +40,7 @@ module CsTemplate
     end
 
     def no_directory?(path)
-      File.directory? path
+      !File.directory? path
     end
 
     def local_path(dir_name)
