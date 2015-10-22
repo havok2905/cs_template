@@ -3,7 +3,6 @@ require 'fileutils'
 
 module CsTemplate
   class Generator < Thor
-    include SystemManager
 
     desc 'install', 'Installs the sass files.'
     def install
