@@ -27,7 +27,7 @@ module CsTemplate
 
     def generate_sass_files
       seven_one_pattern.each do |dir_name|
-        FileUtils.cp_r asset_path(dir_name)
+        FileUtils.cp_r asset_path(dir_name), './'
       end
     end
 
