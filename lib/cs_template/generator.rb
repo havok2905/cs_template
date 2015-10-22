@@ -1,5 +1,6 @@
 require 'thor'
 require 'fileutils'
+require 'system_manager'
 
 module CsTemplate
   class Generator < Thor
