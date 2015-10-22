@@ -33,8 +33,7 @@ module CsTemplate
     end
 
     def no_directory(path)
-      puts (Dir[path].entries - %w{ . .. })
-      return true if (Dir[path].entries - %w{ . .. }).empty?
+      (Dir[path].entries - %w{ . .. }).empty?
     end
 
     def asset_path(dir_name)
@@ -49,12 +48,13 @@ module CsTemplate
     end
 
     def init_directory(dir_name)
+      return unless no_directory asset_path(dir_name)
+      puts dir_name
       FileUtils.mkdir_p asset_path(dir_name)
     end
 
     def destroy_directory(dir_name)
-      path = asset_path dir_name
-      return if no_directory path
+      return if no_directory asset_path(dir_name)
       FileUtils.rm_r(dir_name)
     end
   end
