@@ -16,6 +16,18 @@ module CsTemplate
 
     private
 
+    def generate_sass_files
+      seven_one_pattern.each do |dir_name|
+        copy_directory || init_directory
+      end
+    end
+
+    def destroy_sass_files
+      seven_one_pattern.each do |dir_name|
+        FileUtils.rm_r dir_name
+      end
+    end
+
     def seven_one_pattern
       %w(base components layout pages themes utils vendor)
     end
@@ -25,16 +37,14 @@ module CsTemplate
       File.join root_dir, 'app', 'assets', 'stylesheets', dir_name
     end
 
-    def generate_sass_files
-      seven_one_pattern.each do |dir_name|
-        FileUtils.cp_r asset_path(dir_name), './'
-      end
+    def copy_directory(dirname)
+      path = asset_path dir_name
+      return if (Dir[path].entries - %w{ . .. }).empty?
+      FileUtils.cp_r asset_path(dir_name), './'
     end
 
-    def destroy_sass_files
-      seven_one_pattern.each do |dir_name|
-        FileUtils.rm_r dir_name
-      end
+    def init_directory(dirname)
+      FileUtils.makdir_p asset_path(dir_name)
     end
 
     def generate_bourbon
