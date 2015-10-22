@@ -19,9 +19,10 @@ module CsTemplate
     def generate_sass_files
       seven_one_pattern.each do |dir_name|
         copy_directory(dir_name) || init_directory(dir_name) || nil
-        gem_install 'bourbon'
-        gem_install 'neat'
       end
+      
+      gem_install 'bourbon'
+      gem_install 'neat'
     end
 
     def destroy_sass_files
