@@ -37,13 +37,13 @@ module CsTemplate
       File.join root_dir, 'app', 'assets', 'stylesheets', dir_name
     end
 
-    def copy_directory(dirname)
+    def copy_directory(dir_name)
       path = asset_path dir_name
       return if (Dir[path].entries - %w{ . .. }).empty?
       FileUtils.cp_r asset_path(dir_name), './'
     end
 
-    def init_directory(dirname)
+    def init_directory(dir_name)
       FileUtils.makdir_p asset_path(dir_name)
     end
 
