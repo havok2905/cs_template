@@ -34,7 +34,7 @@ module CsTemplate
     end
 
     def main_scss_install
-      !File.file?(main_scss) && FileUtils.cp_r asset_path(main_scss), './'
+      !File.file?(main_scss) && FileUtils.cp_r(asset_path(main_scss), './')
     end
 
     def sass_files_destroy
