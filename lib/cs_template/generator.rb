@@ -30,39 +30,41 @@ module CsTemplate
       seven_one_pattern.each do |dir_name|
         copy_directory(dir_name) || init_directory(dir_name) || nil
       end
-      FileUtils.cp_r asset_path(main_scss), './'
+      main_scss_install
+    end
+
+    def main_scss_install
+      !File.file?(main_scss) && FileUtils.cp_r asset_path(main_scss), './'
     end
 
     def sass_files_destroy
       seven_one_pattern.each do |dir_name|
         destroy_directory(dir_name) || nil
       end
-      FileUtils.rm_r local_path(main_scss)
+      main_scss_destroy
     end
 
-    def gem_install(gem)
-      FileUtils.cd 'vendor'
-      system "#{gem} install"
-      FileUtils.cd '../'
+    def main_scss_destroy
+      File.file?(main_scss) && FileUtils.rm_r(local_path(main_scss))
     end
 
     def copy_directory(dir_name)
       a_path = asset_path dir_name
       l_path = local_path dir_name
-      return if empty_directory?(a_path) || local_directory?(l_path)
+      return if empty_directory?(a_path) || File.directory?(l_path)
       FileUtils.cp_r a_path, './'
     end
 
     def init_directory(dir_name)
       a_path = asset_path dir_name
       l_path = local_path dir_name
-      return if full_directory?(a_path) || local_directory?(l_path)
+      return if !empty_directory?(a_path) || File.directory?(l_path)
       FileUtils.mkdir_p dir_name
     end
 
     def destroy_directory(dir_name)
       path = local_path dir_name
-      return if !local_directory? path
+      return if !File.directory? path
       FileUtils.rm_r path
     end
 
@@ -79,12 +81,10 @@ module CsTemplate
       (Dir[path].entries - %w{ . .. }).empty?
     end
 
-    def full_directory?(path)
-      !(Dir[path].entries - %w{ . .. }).empty?
-    end
-
-    def local_directory?(path)
-      File.directory? path
+    def gem_install(gem)
+      FileUtils.cd 'vendor'
+      system "#{gem} install"
+      FileUtils.cd '../'
     end
   end
 end
