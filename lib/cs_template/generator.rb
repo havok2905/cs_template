@@ -18,7 +18,7 @@ module CsTemplate
 
     def generate_sass_files
       seven_one_pattern.each do |dir_name|
-        copy_directory || init_directory
+        copy_directory(dir_name) || init_directory(dir_name)
       end
     end
 
