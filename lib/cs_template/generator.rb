@@ -50,12 +50,12 @@ module CsTemplate
     def init_directory(dir_name)
       return unless no_directory asset_path(dir_name)
       puts dir_name
-      FileUtils.mkdir_p asset_path(dir_name)
+      FileUtils.mkdir_p dir_name
     end
 
     def destroy_directory(dir_name)
       return if no_directory asset_path(dir_name)
-      FileUtils.rm_r(dir_name)
+      FileUtils.rm_r dir_name
     end
   end
 end
