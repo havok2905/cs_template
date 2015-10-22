@@ -49,7 +49,6 @@ module CsTemplate
 
     def init_directory(dir_name)
       return unless no_directory asset_path(dir_name)
-      puts dir_name
       FileUtils.mkdir_p dir_name
     end
 
