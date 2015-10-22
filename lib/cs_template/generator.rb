@@ -55,14 +55,14 @@ module CsTemplate
     def copy_directory(dir_name)
       a_path = asset_path dir_name
       l_path = local_path dir_name
-      return if !empty_directory?(a_path) && directory?(l_path)
+      return if empty_directory?(a_path) && directory?(l_path)
       FileUtils.cp_r a_path, './'
     end
 
     def init_directory(dir_name)
       a_path = asset_path dir_name
       l_path = local_path dir_name
-      return if empty_directory?(a_path) && directory?(l_path)
+      return if !empty_directory?(a_path) && directory?(l_path)
       FileUtils.mkdir_p dir_name
     end
 
