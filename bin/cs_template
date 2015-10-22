@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 
-puts 'hi'
+require 'cs_template'
+CsTemplate::Generator.start

@@ -1,6 +1,8 @@
 module CsTemplate
-  class Generator
-    def run
+  class Generator < Thor
+
+    desc 'Installs the sass files'
+    def install
       puts 'hi'
     end
   end
