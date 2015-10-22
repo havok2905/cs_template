@@ -24,7 +24,7 @@ module CsTemplate
 
     def destroy_sass_files
       seven_one_pattern.each do |dir_name|
-        remove_directory(dir_name) || nil
+        destroy_directory(dir_name) || nil
       end
     end
 
