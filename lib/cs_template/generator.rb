@@ -39,8 +39,8 @@ module CsTemplate
       (Dir[path].entries - %w{ . .. }).empty?
     end
 
-    def no_directory?(path)
-      !File.directory? path
+    def directory?(path)
+      File.directory? path
     end
 
     def local_path(dir_name)
@@ -55,20 +55,20 @@ module CsTemplate
     def copy_directory(dir_name)
       a_path = asset_path dir_name
       l_path = local_path dir_name
-      return if !empty_directory?(a_path) && no_directory?(l_path)
+      return if !empty_directory?(a_path) && directory?(l_path)
       FileUtils.cp_r a_path, './'
     end
 
     def init_directory(dir_name)
       a_path = asset_path dir_name
       l_path = local_path dir_name
-      return if empty_directory?(a_path) && no_directory?(l_path)
+      return if empty_directory?(a_path) && directory?(l_path)
       FileUtils.mkdir_p dir_name
     end
 
     def destroy_directory(dir_name)
       l_path = local_path dir_name
-      return if no_directory? l_path
+      return if !directory? l_path
       FileUtils.rm_r dir_name
     end
 
