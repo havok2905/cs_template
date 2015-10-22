@@ -39,7 +39,7 @@ module CsTemplate
       (Dir[path].entries - %w{ . .. }).empty?
     end
 
-    def no_directory(path)
+    def directory?(path)
       File.directory? path
     end
 
@@ -66,7 +66,7 @@ module CsTemplate
 
     def destroy_directory(dir_name)
       path = local_path dir_name
-      return if no_directory? path
+      return unless directory? path
       FileUtils.rm_r dir_name
     end
 
