@@ -1,0 +1,74 @@
+$normal-font-size:       14px;
+$tiny-font-size:         12px;
+
+$header-one-font-size:   48px;
+$header-two-font-size:   36px;
+$header-three-font-size: 28px;
+$header-four-font-size:  24px;
+$header-five-font-size:  20px;
+$header-six-font-size:   14px;
+
+$open-sans: 'Open Sans', sans-serif;
+
+html, body {
+  font-size: $normal-font-size;
+  font-family: $open-sans;
+  color: $off-black;
+}
+
+p {
+  @include default-margins();
+  line-height: 2.5;
+}
+
+a {
+  @include anchor-reset($primary-color);
+  &:hover { color: lighten($primary-color, 20); }
+}
+
+em, cite {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: $header-one-font-size;
+}
+
+h2 {
+  font-size: $header-two-font-size;
+}
+
+h3 {
+  font-size: $header-three-font-size;
+}
+
+h4 {
+  font-size: $header-four-font-size;
+}
+
+h5 {
+  font-size: $header-five-font-size;
+}
+
+h6 {
+  font-size: $header-six-font-size;
+}

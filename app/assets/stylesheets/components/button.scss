@@ -1,0 +1,46 @@
+a.button {
+  line-height: 40px;
+  &.-small { line-height: 30px; }
+  &.-large { line-height: 50px; }
+}
+
+.button {
+  @include anchor-reset($white);
+
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-size: $tiny-font-size;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.-small {
+    width: 75px;
+    height: 30px;
+  }
+
+  &.-large {
+    width: 150px;
+    height: 50px;
+    font-size: $normal-font-size;
+  }
+
+  &.-save {
+    background-color: $okay;
+    &:hover { background-color: lighten($okay, 10); }
+  }
+
+  &.-neutral {
+    background-color: $primary-color;
+    &:hover { background-color: lighten($primary-color, 10); }
+  }
+
+  &.-destroy {
+    background-color: $alert;
+    &:hover { background-color: lighten($alert, 10); }
+  }
+}

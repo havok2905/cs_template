@@ -1,0 +1,9 @@
+@mixin anchor-reset($color) {
+  text-decoration: none;
+  color: $color;
+  transition: color 0.3s;
+}
+
+@mixin default-margins() {
+  margin: 15px 0;
+}

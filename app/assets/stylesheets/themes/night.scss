@@ -1,0 +1,13 @@
+.night {
+  background-color: $black;
+  color: $gray;
+
+  fieldset {
+    border-color: $black;
+  }
+
+  input, textarea {
+    background-color: $off-black;
+    border-color: $black;
+  }
+}

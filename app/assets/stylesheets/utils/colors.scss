@@ -1,0 +1,21 @@
+$primary-color:   #1E62AE; // Cloudspace Blue
+$secondary-color: #6CC6F7; // Other Blue
+$alert:           #DB4848; // Red
+$warning:         #E2DE63; // Yellow
+$okay:            #67e564; // Green
+$black:           #000000;
+$off-black:       #333333;
+$gray:            #CCCCCC;
+$off-white:       #EEEEEE;
+$white:           #FFFFFF;
+
+.bg-primary-color   { background-color: $primary-color;   color: $white; }
+.bg-secondary-color { background-color: $secondary-color; color: $white; }
+.bg-alert           { background-color: $alert;           color: $white; }
+.bg-warning         { background-color: $warning;         color: $white; }
+.bg-okay            { background-color: $okay;            color: $white; }
+.bg-black           { background-color: $black;            color: $white; }
+.bg-off-black       { background-color: $off-black;       color: $white; }
+.bg-gray            { background-color: $gray;            color: $black; }
+.bg-off-white       { background-color: $off-white;       color: $black; }
+.bg-white           { background-color: $white;           color: $black; }

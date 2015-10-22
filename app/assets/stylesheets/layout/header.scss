@@ -1,0 +1,28 @@
+header {
+  nav {
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: $tiny-font-size;
+    color: $white;
+
+    &:after { @include clearfix; }
+  }
+
+  .left  { float: left;  }
+  .right { float: right; }
+
+  h1 {
+    display: inline;
+    font-size: $tiny-font-size;
+    line-height: normal;
+  }
+
+  ul {
+    display: inline;
+  }
+
+  li {
+    list-style-type: none;
+    display: inline;
+  }
+}

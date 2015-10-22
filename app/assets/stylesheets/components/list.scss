@@ -1,0 +1,30 @@
+ol, ul, dl {
+  @include default-margins();
+}
+
+ol, ul {
+  margin-left: -20px;
+}
+
+ol {
+  li {
+    list-style-type: decimal;
+  }
+}
+
+ul {
+  li {
+    list-style-type: disc;
+  }
+}
+
+dl {
+  dt {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+
+  dd {
+    margin: 0 0 15px 0;
+  }
+}

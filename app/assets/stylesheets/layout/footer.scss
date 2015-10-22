@@ -1,0 +1,9 @@
+footer {
+  padding: 30px;
+  background-color: $primary-color;
+  color: $white;
+
+  div {
+    @include outer-container();
+  }
+}

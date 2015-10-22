@@ -1,0 +1,4 @@
+section {
+  @include outer-container();
+  padding: 20px;
+}
