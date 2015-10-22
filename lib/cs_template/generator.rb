@@ -24,8 +24,7 @@ module CsTemplate
 
     def destroy_sass_files
       seven_one_pattern.each do |dir_name|
-        next if no_directory asset_path(dir_name)
-        FileUtils.rm_r dir_name
+        FileUtils.rm_r(dir_name) unless no_directory asset_path(dir_name)
       end
     end
 
