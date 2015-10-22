@@ -4,9 +4,14 @@ require 'fileutils'
 module CsTemplate
   class Generator < Thor
 
-    desc 'install', 'Installs the sass files'
+    desc 'install', 'Installs the sass files.'
     def install
       generate_sass_files
+    end
+
+    desc 'destroy', 'BEWARE! Destroys all SASS files.'
+    def destroy
+      destroy_sass_files
     end
 
     private
@@ -18,6 +23,12 @@ module CsTemplate
     def generate_sass_files
       seven_one_pattern.each do |dir_name|
         FileUtils.mkdir_p dir_name
+      end
+    end
+
+    def destroy_sass_files
+      seven_one_pattern.each do |dir_name|
+        FileUtils.rm_r dir_name
       end
     end
 
