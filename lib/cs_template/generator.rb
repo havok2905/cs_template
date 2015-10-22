@@ -35,8 +35,16 @@ module CsTemplate
       %w(base components layout pages themes utils vendor)
     end
 
-    def no_directory(path)
+    def empty_directory?(path)
       (Dir[path].entries - %w{ . .. }).empty?
+    end
+
+    def no_directory(path)
+      File.directory? path
+    end
+
+    def local_path(dir_name)
+      "./#{dir_name}"
     end
 
     def asset_path(dir_name)
@@ -46,16 +54,19 @@ module CsTemplate
 
     def copy_directory(dir_name)
       path = asset_path dir_name
-      return if no_directory path
-      FileUtils.cp_r asset_path(dir_name), './'
+      return if empty_directory? path
+      FileUtils.cp_r path, './'
     end
 
     def init_directory(dir_name)
-      return unless no_directory asset_path(dir_name)
+      path = asset_path dir_name
+      return unless empty_directory? path
       FileUtils.mkdir_p dir_name
     end
 
     def destroy_directory(dir_name)
+      path = local_path dir_name
+      return if no_directory? path
       FileUtils.rm_r dir_name
     end
 
