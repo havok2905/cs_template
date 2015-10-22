@@ -55,7 +55,7 @@ module CsTemplate
     def destroy_directory(dir_name)
       path = asset_path dir_name
       return if no_directory path
-      FileUtils.rm_r(path)
+      FileUtils.rm_r(dir_name)
     end
   end
 end
