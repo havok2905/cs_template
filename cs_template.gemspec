@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Kick off any project with SASS}
   spec.description   = %q{A base sass template for kicking off new projects}
-  spec.homepage      = "https://github.com/havok2905/cs-template"
+  spec.homepage      = "https://github.com/havok2905/cs_template"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
